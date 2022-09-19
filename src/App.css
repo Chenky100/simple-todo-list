@@ -1,7 +1,106 @@
 .App {
   text-align: center;
+  border: solid black 1px;
+
+}
+body{
+  background-color: rgb(54, 54, 54);
+  color: rgb(254, 254, 254);
+  padding:10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+.one{
+  background-color: rgb(33, 33, 33);
+  text-align: center;
+  border: solid rgb(255, 255, 255) 1px;
+  border-bottom: 0px;
+  padding: 5px;
+  width: 60vw;
+  margin: auto;
+  height: auto;
+}
+.two{
+  background-color: rgb(33, 33, 33);
+
+  border: solid rgb(255, 255, 255) 1px;
+  border-top: 0px;
+  margin: auto;
+  padding: 5px;
+  height: 50px;
+  width: 60vw;
+  text-align: center;
+
 }
 
+#todoInput{
+  width: 240px;
+}
+button{
+  width: 123px;
+  height: 25px;
+  /* font-weight: ; */
+}
+.myTodos{
+  /* border: solid rgb(255, 255, 255) 1px; */
+  width: 50%;
+  margin: auto;
+  text-align: left;
+
+
+}
+#thead{
+  width: 60vw;
+  height: 100px ;
+  /* border: 1px solid white; */
+}
+#theme{
+  height: 50px;
+  width: 50px;
+  display: inline-block;
+
+  display: block;
+  margin: 10px 10px;
+  float: right;
+  /* border: 1px solid white; */
+}
+#chead{
+  width: 30vw;
+}
+#td1{
+  /* border: 1px solid white; */
+  width: 15vw;
+}
+#td3{
+  /* border: 1px solid white; */
+  width: 15vw;
+}
+
+
+.twst{
+  margin: 0;
+/* width: 40px; */
+}
+.todoText{
+  margin: 0;
+  border: 0px solid red;
+  /* width: 25%; */
+}
+@media (max-resolution: 1200px) {
+
+}
+@media only screen and (max-width: 600px) {
+  /* For tablets: */
+  .one{
+    width: 85vw;
+  }
+  .two{
+    width: 85vw;
+  }
+
+
+}
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +134,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
