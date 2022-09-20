@@ -7,34 +7,42 @@ const LOCAL_STORAGE_KEY = "todoApp.todos";
 function App() {
   const [todos, setTodos] = useState([]);
   const todoRef = useRef();
-
+  var prevTodos = [];
+  var count = 0;
   useEffect(() => {
+    count++;
+    console.log("!@COUNT@!", count);
     const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     // console.log("len", storedTodos);
-    if (storedTodos && storedTodos.length > 0) {
-      // console.log("setting", storedTodos[0]);
-      let tmp = [...storedTodos];
-      setTodos(tmp);
+    if (localStorage.getItem("todoApp.have_todos")) {
+      if (storedTodos && storedTodos.length > 0) {
+        // console.log("setting", storedTodos[0]);
+        let tmp = [...storedTodos];
+        console.log("stored todos", tmp);
+        setTodos(tmp);
+      }
     } else {
-      // let firstTodos = [
-      //   { id: uuidv4(), text: "Add a todo. ", complete: false },
-      //   {
-      //     id: uuidv4(),
-      //     text: "Hit the checkbox of a todo to mark it as done. ",
-      //     complete: false,
-      //   },
-      //   {
-      //     id: uuidv4(),
-      //     text: 'Clear completed todos with the "Clear Complete" button. ',
-      //     complete: false,
-      //   },
-      //   {
-      //     id: uuidv4(),
-      //     text: "Try out the theme button on the top right. ",
-      //     complete: false,
-      //   },
-      // ];
-      // setTodos(firstTodos);
+      console.log("no stored todos");
+      localStorage.setItem("todoApp.have_todos", JSON.stringify(true));
+      let firstTodos = [
+        { id: uuidv4(), text: "Add a todo. ", complete: false },
+        {
+          id: uuidv4(),
+          text: "Hit the checkbox of a todo to mark it as done. ",
+          complete: false,
+        },
+        {
+          id: uuidv4(),
+          text: 'Clear completed todos with the "Clear Complete" button. ',
+          complete: false,
+        },
+        {
+          id: uuidv4(),
+          text: "Try out the theme button on the top right. ",
+          complete: false,
+        },
+      ];
+      setTodos(firstTodos);
     }
   }, []); // useeffect on empty array happens only first time the app loads
 
@@ -96,6 +104,10 @@ function App() {
     let x = document.getElementsByClassName("theme1");
     // document.getElementsByClassName("one").style.backgroundColor;rgb(33, 33, 33)
   };
+  const reset = () => {
+    // localStorage.removeItem(LOCAL_STORAGE_KEY);
+    // document.reload();
+  };
   return (
     <>
       <div className="one theme2">
@@ -126,8 +138,13 @@ function App() {
         <br />
         <input ref={todoRef} type="text" id="todoInput" />
         <br />
-        <button onClick={addTodo}> Add Todo</button>
-        <button onClick={clearComplete}> Clear Complete</button>
+
+        <button type="button" class="btn btn-success" onClick={addTodo}>
+          Add Todo
+        </button>
+        <button type="button" class="btn btn-secondary" onClick={clearComplete}>
+          Clear Complete
+        </button>
         <br />
         <br />
         <div className="myTodos">
@@ -137,10 +154,9 @@ function App() {
       </div>
       <div className="two theme2">
         <br />
-
         <div> {todos.length} left</div>
       </div>
-      <div></div>
+      <div>{/* <button onClick={reset}> Reset Todos</button> */}</div>
     </>
   );
 }
